@@ -1,0 +1,103 @@
+/* Styling class for our navigation bar  */
+
+header {
+    background: #04AA6D;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+header::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.logo {
+    float: left;
+    padding: 10px 0;
+}
+
+nav {
+    float: right;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin-left: 50px;
+    padding-top: 23px;
+    position: relative;
+}
+
+nav a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: rgb(26, 25, 25);
+}
+
+nav a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background-color: rgb(26, 25, 25);
+    position: absolute;
+    top: 0;
+    width: 0%;
+    transition: all ease-in-out 150ms;
+}
+
+nav a:hover::before {
+    width: 100%;
+}
+
+
+/* Table styling */
+
+td input {
+    margin: 5px;
+}
+
+
+/* Styling for table */
+
+#tablestyle {
+    margin-top: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tablestyle td,
+#tablestyle th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#tablestyle tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#tablestyle tr:hover {
+    background-color: #ddd;
+}
+
+#tablestyle th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #04AA6D;
+    color: white;
+}
