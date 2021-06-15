@@ -1,3 +1,21 @@
+<?php
+session_start();
+
+$_SESSION['status'] = null;
+$_SESSION['msg'] = null;
+$_SESSION['loginErr']= "ok";
+
+
+
+if ($_SESSION['loginErr']==null){
+    echo '<script language="javascript">';
+    echo 'alert("Error Login Credential")';
+    echo '</script>';
+    $_SESSION['loginErr']="ok";
+}
+
+?>
+
 <!DOCTYPE html>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 <link rel="stylesheet" href="styles.css">
@@ -28,24 +46,26 @@
             </div>
             <!--Style to create box-->
             <div style="border: 2px solid black; padding: 15px;">
-                <form action="javascript: location.href = 'admin/adminRA.html'" style="padding-top: 15px ;">
+                <form action="login.php" method="POST" style="padding-top: 15px ;">
                     <!--path file jangan lupa-->
 
                     <!-- ID and Password -->
                     <label for="id">ID :</label>
-                    <input type="text" id="id" name="id" placeholder="Enter your ID" style="margin-left:50px;" required>
+                    <input type="text" id="user" name="user" placeholder="Enter your ID" style="margin-left:50px;" required>
+
                     <br><br>
+
                     <label for="password">Password :</label>
-                    <input type="password" id="pasword" name="password" placeholder="Enter your password" required><br>
+                    <input type="password" id="pass" name="pass" placeholder="Enter your password" required><br>
 
                     <!--Radio Box for Admin, Lecturer and Student -->
-                    <input type="radio" id="admin" name="role" value="admin" required>
+                    <input type="radio" id="admin" name="usertype" value="admin" required>
                     <label for="admin">Admin</label><br>
 
-                    <input type="radio" id="lecturer" name="role" value="lecturer" required>
+                    <input type="radio" id="lecturer" name="usertype" value="lecturer" required>
                     <label for="lecturer">Lecturer</label><br>
 
-                    <input type="radio" id="student" name="role" value="student" required>
+                    <input type="radio" id="student" name="usertype" value="student" required>
                     <label for="student">Student</label><br>
 
                     <!--Button-->
@@ -57,3 +77,5 @@
 </body>
 
 </html>
+
+
