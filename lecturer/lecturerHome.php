@@ -16,8 +16,8 @@
 
         <nav>
             <ul>
-                <li><a href="lecturerHome.html">Home</a></li>
-                <li><a href="../index.html">Log Out</a></li>
+                <li><a href="lecturerHome.php">Home</a></li>
+                <li><a href="../index.php">Log Out</a></li>
             </ul>
         </nav>
 
@@ -46,29 +46,29 @@
             <tr>
                 <td>Database</td>
                 <td style="text-align: center;">
-                    <input onclick="location.href = 'lecturerTask.html';" type="button" value="Create">
+                    <input onclick="location.href = 'lecturerTask.php';" type="button" value="Create">
                 </td>
                 <td style="text-align: center;">
-                    <input onclick="location.href = 'lecturerResultTF.html';" type="submit" value="Result">
-                    <input onclick="location.href = 'lecturerQuizTF.html';" type="submit" value="Create / View Quiz">
+                    <input onclick="location.href = 'lecturerResultTF.php';" type="submit" value="Result">
+                    <input onclick="location.href = 'lecturerQuizTF.php';" type="submit" value="Create / View Quiz">
                 </td>
                 <td style="text-align: center;">
-                    <input onclick="location.href = 'lecturerResultObj.html';" type="submit" value="Result">
-                    <input onclick="location.href = 'lecturerQuizObj.html';" type="submit" value="Create / View Quiz"></td>
+                    <input onclick="location.href = 'lecturerResultObj.php';" type="submit" value="Result">
+                    <input onclick="location.href = 'lecturerQuizObj.php';" type="submit" value="Create / View Quiz"></td>
             </tr>
 
             <tr>
                 <td>Creativity and Innovation</td>
                 <td style="text-align: center;">
-                    <input onclick="location.href = 'lecturerTask.html';" type="button" value="Create">
+                    <input onclick="location.href = 'lecturerTask.php';" type="button" value="Create">
                 </td>
                 <td style="text-align: center;">
-                    <input onclick="location.href = 'lecturerResultTF.html';" type="submit" value="Result">
-                    <input onclick="location.href = 'lecturerQuizTF.html';" type="submit" value="Create / View Quiz">
+                    <input onclick="location.href = 'lecturerResultTF.php';" type="submit" value="Result">
+                    <input onclick="location.href = 'lecturerQuizTF.php';" type="submit" value="Create / View Quiz">
                 </td>
                 <td style="text-align: center;">
-                    <input onclick="location.href = 'lecturerResultObj.html';" type="submit" value="Result">
-                    <input onclick="location.href = 'lecturerQuizObj.html';" type="submit" value="Create / View Quiz"></td>
+                    <input onclick="location.href = 'lecturerResultObj.php';" type="submit" value="Result">
+                    <input onclick="location.href = 'lecturerQuizObj.php';" type="submit" value="Create / View Quiz"></td>
             </tr>
 
         </table>
