@@ -16,8 +16,8 @@
 
         <nav>
             <ul>
-                <li><a href="lecturerHome.html">Home</a></li>
-                <li><a href="../index.html">Log Out</a></li>
+                <li><a href="lecturerHome.php">Home</a></li>
+                <li><a href="../index.php">Log Out</a></li>
             </ul>
         </nav>
 

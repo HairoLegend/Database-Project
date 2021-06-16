@@ -16,8 +16,8 @@
 
         <nav>
             <ul>
-                <li><a href="lecturerHome.html">Home</a></li>
-                <li><a href="../index.html">Log Out</a></li>
+                <li><a href="lecturerHome.php">Home</a></li>
+                <li><a href="../index.php">Log Out</a></li>
             </ul>
         </nav>
 
@@ -62,7 +62,7 @@
                     <input type="submit" value="Download File">
                 </td>
                 <td style="text-align: center;">
-                    <input onclick="location.href = 'lecturerTaskSub.html';" type="submit" value="Submission">
+                    <input onclick="location.href = 'lecturerTaskSub.php';" type="submit" value="Submission">
                 </td>
                 <td style="text-align: center;">
                     <input type="submit" value="Delete">
@@ -79,7 +79,7 @@
                     <input type="submit" value="Download File">
                 </td>
                 <td id="button">
-                    <input onclick="location.href = 'lecturerTaskSub.html';" type="submit" value="Submission">
+                    <input onclick="location.href = 'lecturerTaskSub.php';" type="submit" value="Submission">
                 </td>
                 <td id="button">
                     <input type="submit" value="Delete">

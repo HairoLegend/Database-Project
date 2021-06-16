@@ -54,15 +54,15 @@
                 <td>Muhammad Hazim</td>
                 <td>Database</td>
                 <td style="text-align: center;">
-                    <input onclick="location.href = 'studentTask.html';" type="submit" value="View">
+                    <input onclick="location.href = 'studentTask.php';" type="submit" value="View">
                 </td>
                 <td></td>
                 <td>
-                    <input onclick="location.href = 'studentTF.html';" type="submit" value="View">
+                    <input onclick="location.href = 'studentTF.php';" type="submit" value="View">
                 </td>
                 <td></td>
                 <td>
-                    <input onclick="location.href = 'studentObj.html';" type="submit" value="View">
+                    <input onclick="location.href = 'studentObj.php';" type="submit" value="View">
                 </td>
 
             </tr>
