@@ -16,9 +16,9 @@
 
         <nav>
             <ul>
-                <li><a href="studentHome.html">Home</a></li>
-                <li><a href="studentRegSub.html">Register Subject</a></li>
-                <li><a href="../index.html">Log Out</a></li>
+                <li><a href="studentHome.php">Home</a></li>
+                <li><a href="studentRegSub.php">Register Subject</a></li>
+                <li><a href="../index.php">Log Out</a></li>
             </ul>
         </nav>
 

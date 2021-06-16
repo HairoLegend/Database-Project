@@ -16,9 +16,9 @@
 
         <nav>
             <ul>
-                <li><a href="studentHome.html">Home</a></li>
-                <li><a href="studentRegSub.html">Register Subject</a></li>
-                <li><a href="../index.html">Log Out</a></li>
+                <li><a href="studentHome.php">Home</a></li>
+                <li><a href="studentRegSub.php">Register Subject</a></li>
+                <li><a href="../index.php">Log Out</a></li>
             </ul>
         </nav>
 
@@ -28,9 +28,9 @@
 
 <body>
     <div style="margin-left: 120px; margin-top: 20px;">
-        <h3>Quiz True / False</h3>
-        <h6>Subject Name : </h6>
-        <h6>Subject Code : </h6>
+        <h3>Register Subject</h3>
+        <h6>Student Name : </h6>
+        <h6>Student ID : </h6>
     </div>
 
     <hr>
@@ -39,28 +39,30 @@
 
             <tr>
                 <th style="text-align: left;">No</th>
-                <th>Question</th>
-                <th>True / False</th>
-                <th>Confirm Answer</th>
+                <th>Lecturer</th>
+                <th>Subject</th>
+                <th>Register</th>
             </tr>
 
             <tr style="text-align: center;">
                 <td style="text-align: left;">1</td>
-                <td>Why are you gay?</td>
-                <td><input style="margin: 5px;" type="submit" value="True">
-                    <input type="submit" value="False"></td>
-                <td>
-                    <input type="submit" value="Confirm">
+                <td>Muhammad Hazim</td>
+                <td>Database</td>
+                <td style="text-align: center;">
+                    <input type="submit" value="Register">
+                </td>
+            </tr>
+
+            <tr style="text-align: center;">
+                <td style="text-align: left;">1</td>
+                <td>Danish Hensem</td>
+                <td>Creativity and Innovation</td>
+                <td style="text-align: center;">
+                    <input type="submit" value="Register">
                 </td>
             </tr>
 
         </table>
-        <br>
-
-        <div style="text-align: right;">
-            <input id="button" type="submit" value="Finish Quiz">
-        </div>
-
     </div>
 
 </body>

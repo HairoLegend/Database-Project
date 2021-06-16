@@ -16,9 +16,9 @@
 
         <nav>
             <ul>
-                <li><a href="studentHome.html">Home</a></li>
-                <li><a href="studentRegSub.html">Register Subject</a></li>
-                <li><a href="../index.html">Log Out</a></li>
+                <li><a href="studentHome.php">Home</a></li>
+                <li><a href="studentRegSub.php">Register Subject</a></li>
+                <li><a href="../index.php">Log Out</a></li>
             </ul>
         </nav>
 
@@ -64,11 +64,12 @@
                 <td>Norman itu Wali</td>
                 <td>Ngamsoi</td>
                 <td><select name="Answer">
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="D">D</option>
-            </td></td>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                </td>
+                </td>
                 <td style="text-align: center;">
                     <input type="submit" value="Confirm">
                 </td>
@@ -78,7 +79,7 @@
         <br>
 
         <div style="text-align: right;">
-            <input id="button"  type="submit" value="Finish Quiz">
+            <input id="button" type="submit" value="Finish Quiz">
         </div>
 
     </div>

@@ -14,12 +14,12 @@
 
         <nav>
             <ul>
-                <li><a href="adminRA.html">Register Admin</a></li>
-                <li><a href="adminRL.html">Register Lecturer</a></li>
-                <li><a href="adminRS.html">Register Student</a></li>
-                <li><a href="adminRSub.html">Register Subject</a></li>
-                <li><a href="adminRW.html">Register Workload</a></li>
-                <li><a href="../index.html">Log Out</a></li>
+            <li><a href="adminRA.php">Register Admin</a></li>
+                <li><a href="adminRL.php">Register Lecturer</a></li>
+                <li><a href="adminRS.php">Register Student</a></li>
+                <li><a href="adminRSub.php">Register Subject</a></li>
+                <li><a href="adminRW.php">Register Workload</a></li>
+                <li><a href="../index.php">Log Out</a></li>
             </ul>
         </nav>
 
@@ -27,23 +27,21 @@
 </header>
 
 <body>
-    <h3 style="margin-left: 120px; margin-top: 20px;">Register Student</h3>
+    <h3 style="margin-left: 120px; margin-top: 20px;">Register Subject</h3>
     <hr>
     <div class="container">
         <table id="tablestyle">
             <tr>
-                <th>Student ID</th>
-                <th>Student Name</th>
-                <th>Email</th>
+                <th>Subject Code</th>
+                <th>Subject Name</th>
                 <th>Modified By</th>
                 <th>Modified On</th>
-                <th style="text-align: center;">Update / Delete</th>
+                <th style="text-align: center;">Update / Delete / Add</th>
             </tr>
 
             <tr>
-                <td>AI190065</td>
-                <td>Muhammad Hazim bin Mohd Alim</td>
-                <td>hazimm2000@gmail.com</td>
+                <td>BIC21404</td>
+                <td>Database</td>
                 <td></td>
                 <td></td>
                 <td style="text-align: center;">
@@ -51,16 +49,14 @@
                 </td>
             </tr>
             <tr>
-                <td><input type="text" name="id" placeholder="Enter new student ID" style="width: auto;"></td>
-                <td><input type="text" name="name" placeholder="Enter new student name" style="width: auto;"></td>
-                <td></td>
+                <td><input type="text" name="subjectCode" placeholder="Enter new subject code" style="width: auto;"></td>
+                <td><input type="text" name="subjectName" placeholder="Enter new subject name" style="width: auto;"></td>
                 <td></td>
                 <td></td>
                 <td style="text-align: center;">
                     <input type="submit" value="Add" style="width: auto;">
                 </td>
             </tr>
-
         </table>
 
     </div>

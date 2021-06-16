@@ -38,7 +38,7 @@ if ($table == "admin" && $count == 1) {
     if ($username == $password) {
         header("Location:firstTimeLogin.php?id=$username");
     } else {
-        header("Location: index.php");
+        header("Location: lecturer/lecturerHome.php");
     }
 
 } else if ($table == "student" && $count == 1) {
@@ -50,7 +50,7 @@ if ($table == "admin" && $count == 1) {
     if ($username == $password) {
         header("Location:firstTimeLogin.php?id=$username");
     } else {
-        header("Location: index.php");
+        header("Location: student/studentHome.php");
     }
 } else {
     // $_SESSION['loginErr'] = "error";

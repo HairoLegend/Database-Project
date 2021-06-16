@@ -12,16 +12,16 @@
     <title>Project Database</title>
 
     <div class="container">
-        <h1 class="logo">Admin Module</h1>
+        <h1 class="logo">Admin Module</h1>  
 
         <nav>
             <ul>
-                <li><a href="adminRA.html">Register Admin</a></li>
-                <li><a href="adminRL.html">Register Lecturer</a></li>
-                <li><a href="adminRS.html">Register Student</a></li>
-                <li><a href="adminRSub.html">Register Subject</a></li>
-                <li><a href="adminRW.html">Register Workload</a></li>
-                <li><a href="../index.html">Log Out</a></li>
+                <li><a href="adminRA.php">Register Admin</a></li>
+                <li><a href="adminRL.php">Register Lecturer</a></li>
+                <li><a href="adminRS.php">Register Student</a></li>
+                <li><a href="adminRSub.php">Register Subject</a></li>
+                <li><a href="adminRW.php">Register Workload</a></li>
+                <li><a href="../index.php">Log Out</a></li>
             </ul>
         </nav>
 
