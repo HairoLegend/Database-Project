@@ -1,35 +1,34 @@
 <?php
 session_start();
-include "../database/DB.php";
+include "database.php";
 
 $id = $_GET['id'];
 $table = $_GET['table'];
 $name = $_GET['name'];
-$currentUser = "Super Admin";
+$currentUser = $_SESSION['userName'];
 date_default_timezone_set("Asia/Kuala_Lumpur");
 $currentTime = date("Y-m-d h:i:s");
 
 if ($table == 'lecturer' || $table == 'student'  || $table == 'subject')
-    $sql = "UPDATE $table SET name='$name', modiBy='$currentUser', modiOn='$currentTime' WHERE id='$id'";
+    $sql = "UPDATE $table SET name='$name', Modified_by='$currentUser', Date_modified='$currentTime' WHERE id='$id'";
 else
     $sql = "UPDATE $table SET name='$name' WHERE id='$id'";
 
 if ($conn->query($sql) === TRUE) {
-    $_SESSION['msg'] = "Record updated successfully";
-    $_SESSION['status'] = "Success";
+   echo "Success";
     $conn->close();
 } else {
-    $_SESSION['msg'] = "Error updating record: " . $conn->error;
-    $_SESSION['status'] = "Fail";
+   echo "Error updating record: " . $conn->error;
+   
 }
 
 if ($table == "admin")
-    header("location:register/admin.php");
+    header("location:admin/adminRA.php");
 else if ($table == "lecturer")
-    header("location:register/lecturer.php");
+    header("location:admin/adminRL.php");
 else if ($table == "student")
-    header("location:register/student.php");
+    header("location:admin/adminRS.php");
 else if ($table == "subject")
-    header("location:register/subject.php");
+    header("location:admin/adminRSub.php");
 else
-    header("location:/index.php");
+    header("location:index.php");

@@ -1,6 +1,6 @@
 var defaultText, t;
 
-window.onload = function () {
+window.onload = function() {
     var table = document.getElementById("table");
     var rows = table.getElementsByTagName("tr");
     for (var x = 1; x <= rows.length; x++) {

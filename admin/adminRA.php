@@ -56,9 +56,10 @@
 
                     <tr>
                         <td id="id<?= $num ?>"><?php echo $row["id"] ?></td>
-                        <td id="name<?= $num ?>"><?php echo $row["name"] ?></td>
+                        <td contentEditable=" false" id="name<?= $num ?>"><?php echo $row["name"] ?></td>
                         <td style="text-align: center;">
-                            <button id="save<?= $num ?>" onclick="update('admin',<?= $num ?>)" style="margin: 5px;">Update</button>
+                            <button id="update<?= $num ?>" onclick="edit(<?= $num ?>)">Edit</button>
+                            <button id="save<?= $num ?>" onclick="update('admin',<?= $num ?>)" style="margin: 5px;" hidden>Update</button>
                             <button id="delete<?= $num ?>" onclick="remove('admin',<?= $num ?>)">Delete</button>
                         </td>
                     </tr>

@@ -15,13 +15,13 @@ $count = mysqli_num_rows($result);
 $query = "SELECT name FROM $table WHERE id='$username'";
 $results = mysqli_query($conn, $query);
 $row = mysqli_fetch_array($results);
-$_SESSION['usersname'] = $row['name'];
+$_SESSION['userName'] = $row['name'];
 
 if ($table == "admin" && $count == 1) {
 
-    $_SESSION["userid"] = $username;
-    $_SESSION["userpassword"] = $password;
-    $_SESSION['usertable'] = $table;
+    $_SESSION["userId"] = $username;
+    $_SESSION["userPassword"] = $password;
+    $_SESSION['userTable'] = $table;
 
     if ($username == $password) {
         header("Location:firstTimeLogin.php?id=$username");
@@ -31,9 +31,9 @@ if ($table == "admin" && $count == 1) {
 
 } else if ($table == "lecturer" && $count == 1) {
 
-    $_SESSION["userid"] = $username;
-    $_SESSION["userpassword"] = $password;
-    $_SESSION['usertable'] = $table;
+    $_SESSION["userId"] = $username;
+    $_SESSION["userPassword"] = $password;
+    $_SESSION['userTable'] = $table;
 
     if ($username == $password) {
         header("Location:firstTimeLogin.php?id=$username");
@@ -43,9 +43,9 @@ if ($table == "admin" && $count == 1) {
 
 } else if ($table == "student" && $count == 1) {
 
-    $_SESSION["userid"] = $username;
-    $_SESSION["userpassword"] = $password;
-    $_SESSION['usertable'] = $table;
+    $_SESSION["userId"] = $username;
+    $_SESSION["userPassword"] = $password;
+    $_SESSION['userTable'] = $table;
 
     if ($username == $password) {
         header("Location:firstTimeLogin.php?id=$username");

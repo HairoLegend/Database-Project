@@ -58,7 +58,8 @@
                         <td><?php echo $row["Modified_by"] ?></td>
                         <td><?php echo $row["Date_modified"] ?></td>
                         <td style="text-align: center;">
-                            <button id="save<?= $num ?>" onclick="update('lecturer',<?= $num ?>)" style="margin: 5px;">Update</button>
+                            <button id="update<?= $num ?>" onclick="edit(<?= $num ?>)">Edit</button>
+                            <button id="save<?= $num ?>" onclick="update('lecturer',<?= $num ?>)" style="margin: 5px;" hidden>Update</button>
                             <button id="delete<?= $num ?>" onclick="remove('lecturer',<?= $num ?>)">Delete</button>
                         </td>
                     </tr>
@@ -115,4 +116,3 @@
 </body>
 
 </html>
-

@@ -22,4 +22,4 @@ else if ($table == "student")
 else if ($table == "subject")
     header("location:admin/adminRSub.php");
 else
-    header("location:/index.php");
+    header("location:index.php");
