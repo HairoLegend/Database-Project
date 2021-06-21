@@ -40,26 +40,75 @@
                 <th style="text-align: center;">Update / Delete</th>
             </tr>
 
+            <?php
+            include "../database.php";
+
+            $sql = "SELECT id, name, email, Modified_by, Date_modified FROM student";
+            $result = $conn->query($sql);
+            $num = 0;
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    ++$num;
+            ?>
+
+                    <tr>
+                        <td id="id<?= $num ?>"><?php echo $row["id"] ?></td>
+                        <td id="name<?= $num ?>"><?php echo $row["name"] ?></td>
+                        <td id="modi"><?= $row['email']; ?></td>
+                        <td><?php echo $row["Modified_by"] ?></td>
+                        <td><?php echo $row["Date_modified"] ?></td>
+                        <td style="text-align: center;">
+                            <button id="save<?= $num ?>" onclick="update('student',<?= $num ?>)" style="margin: 5px;">Update</button>
+                            <button id="delete<?= $num ?>" onclick="remove('student',<?= $num ?>)">Delete</button>
+                        </td>
+                    </tr>
+            <?php
+                }
+            } else {
+                echo "0 results";
+            }
+            $conn->close();
+            ?>
+
             <tr>
-                <td>AI190065</td>
-                <td>Muhammad Hazim bin Mohd Alim</td>
-                <td>hazimm2000@gmail.com</td>
-                <td></td>
-                <td></td>
-                <td style="text-align: center;">
-                    <input style="margin: 5px;" type="submit" value="Update"><input type="submit" value="Delete">
-                </td>
+                <form method="POST">
+                    <td><input type="text" name="id" placeholder="Enter new student ID" style="width: auto;"></td>
+                    <td><input type="text" name="name" placeholder="Enter new student name" style="width: auto;"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="text-align: center;">
+                        <button name="add" type="submit" style="width: auto;">Add</button>
+                    </td>
+                </form>
             </tr>
-            <tr>
-                <td><input type="text" name="id" placeholder="Enter new student ID" style="width: auto;"></td>
-                <td><input type="text" name="name" placeholder="Enter new student name" style="width: auto;"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td style="text-align: center;">
-                    <input type="submit" value="Add" style="width: auto;">
-                </td>
-            </tr>
+            <?php
+
+            include "../database.php";
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            
+            if (isset($_POST['add'])) {
+                $id = $_POST['id'];
+                $name = $_POST['name'];
+                $email = $id . "@siswa.uthm.edu.my";
+                $Modified_by = "Super admin";
+                $Date_modified = date("Y-m-d H:i:s");
+                $sql = "INSERT INTO student (id, name, email, password, Modified_by, Date_modified) VALUES('$id', '$name', '$email', '$id', '$Modified_by', '$Date_modified')";
+                
+                if ($conn->query($sql) === true) {
+                    // Success
+                    echo "Success";
+                } else {
+                    // Failed
+                    echo "Error: " . $sql . " | " . $conn->error;
+                    die();
+                }
+                echo "<meta http-equiv='refresh' content='0'>";
+            }
+
+            $conn->close();
+            ?>
 
         </table>
 
@@ -69,3 +118,14 @@
 </body>
 
 </html>
+<script>
+    function remove(table, n) {
+        var id = document.getElementById("id" + n).innerText;
+        var name = document.getElementById("name" + n).innerText;
+        var url = ("../delete.php?table=" + table + "&id=" + id);
+        var msg = "Are you sure want to delete this record?\n\n ID :\n" + id + "\n\n Name :\n" + name;
+        var conf = confirm(msg);
+        if (conf)
+            window.location = "" + url;
+    }
+</script>

@@ -12,7 +12,7 @@
     <title>Project Database</title>
 
     <div class="container">
-        <h1 class="logo">Admin Module</h1>  
+        <h1 class="logo">Admin Module</h1>
 
         <nav>
             <ul>
@@ -40,23 +40,82 @@
                 <th>Admin Name</th>
                 <th style="text-align: center;">Update / Delete / Add</th>
             </tr>
-            <tr>
-                <td>AI190054</td>
-                <td>Muhammad Hazim bin Mohd Alim</td>
-                <td style="text-align: center;"><input style="margin: 5px;" type="submit" value="Update"><input type="submit" value="Delete"></td>
-            </tr>
 
-            <tr>
-                <td><input type="text" name="id" placeholder="Enter new admin ID" style="width: auto;"></td>
-                <td><input type="text" name="name" placeholder="Enter new admin name" style="width: auto;"></td>
-                <td style="text-align: center;">
-                    <input type="submit" value="Add" style="width: auto;"></input>
-                </td>
-            </tr>
+            <?php
+            include "../database.php";
 
+            $sql = "SELECT id, name FROM admin";
+            $result = $conn->query($sql);
+            $num = 0;
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    ++$num;
+            ?>
+
+                    <tr>
+                        <td id="id<?= $num ?>"><?php echo $row["id"] ?></td>
+                        <td id="name<?= $num ?>"><?php echo $row["name"] ?></td>
+                        <td style="text-align: center;">
+                            <button id="save<?= $num ?>" onclick="update('admin',<?= $num ?>)" style="margin: 5px;">Update</button>
+                            <button id="delete<?= $num ?>" onclick="remove('admin',<?= $num ?>)">Delete</button>
+                        </td>
+                    </tr>
+
+
+            <?php
+                }
+            } else {
+                echo "0 results";
+            }
+            $conn->close();
+            ?>
+            <tr>
+                <form method="POST">
+                    <td><input type="text" name="id" placeholder="Enter new admin ID" style="width: auto;"></td>
+                    <td><input type="text" name="name" placeholder="Enter new admin name" style="width: auto;"></td>
+                    <td style="text-align: center;">
+                        <button name="add" type="submit" style="width: auto;">Add</button>
+                    </td>
+                </form>
+            </tr>
+            <?php
+
+            include "../database.php";
+
+            if (isset($_POST['add'])) {
+                $id = $_POST['id'];
+                $name = $_POST['name'];
+                $sql = "INSERT INTO admin (id, name, password) VALUES ('$id', '$name', '$id')";
+
+                if ($conn->query($sql) === true) {
+                    // Success
+                    echo "Success";
+                } else {
+                    // Failed
+                    echo "Error: " . $sql . " | " . $conn->error;
+                    die();
+                }
+                echo "<meta http-equiv='refresh' content='0'>";
+            }
+
+            $conn->close();
+            ?>
         </table>
     </div>
 
 </body>
 
 </html>
+
+<script>
+    function remove(table, n) {
+        var id = document.getElementById("id" + n).innerText;
+        var name = document.getElementById("name" + n).innerText;
+        var url = ("../delete.php?table=" + table + "&id=" + id);
+        var msg = "Are you sure want to delete this record?\n\n ID :\n" + id + "\n\n Name :\n" + name;
+        var conf = confirm(msg);
+        if (conf)
+            window.location = "" + url;
+    }
+</script>
