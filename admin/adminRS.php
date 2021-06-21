@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 <link rel="stylesheet" href="../styles.css">
@@ -20,7 +23,7 @@
                 <li><a href="adminRS.php">Register Student</a></li>
                 <li><a href="adminRSub.php">Register Subject</a></li>
                 <li><a href="adminRW.php">Register Workload</a></li>
-                <li><a href="../index.php">Log Out</a></li>
+                <li><a href="../logout.php">Log Out</a></li>
             </ul>
         </nav>
 
@@ -94,7 +97,7 @@
                 $id = $_POST['id'];
                 $name = $_POST['name'];
                 $email = $id . "@siswa.uthm.edu.my";
-                $Modified_by = "Super admin";
+                $Modified_by = $_SESSION['userName'];
                 $Date_modified = date("Y-m-d H:i:s");
                 $sql = "INSERT INTO student (id, name, email, password, Modified_by, Date_modified) VALUES('$id', '$name', '$email', '$id', '$Modified_by', '$Date_modified')";
                 

@@ -54,7 +54,7 @@ if ($table == "admin" && $count == 1) {
     }
 } else {
     // $_SESSION['loginErr'] = "error";
-    $_SESSION['status'] = "Fail";
+    $_SESSION['status'] = "Login Fail";
     $_SESSION['msg'] = "Invalid User ID or Password";
     header("Location: index.php");
 }

@@ -1,17 +1,5 @@
 <?php
 session_start();
-
-$_SESSION['status'] = null;
-$_SESSION['msg'] = null;
-$_SESSION['loginErr']= "ok";
-
-if ($_SESSION['loginErr']==null){
-    echo '<script language="javascript">';
-    echo 'alert("Error Login Credential")';
-    echo '</script>';
-    $_SESSION['loginErr']="ok";
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +17,7 @@ if ($_SESSION['loginErr']==null){
 
         <div class="container logo">
             <h1>Welcome to Project Database System</h1>
-            <small>Founded by Hazim, Norman and Danish  </small>
+            <small>Founded by Hazim, Norman and Danish </small>
         </div>
     </header>
 </head>
@@ -70,10 +58,16 @@ if ($_SESSION['loginErr']==null){
                     <input type="submit" value="Submit" class="btn btn-default btn-primary">
                 </form>
             </div>
+            <?php
+            if (isset($_SESSION['status']))
+                if ($_SESSION['status'] == "Login Fail") {
+                    echo $_SESSION['msg'];
+                    $_SESSION['status'] = "Null";
+                }
+            ?>
         </div>
     </div>
+
 </body>
 
 </html>
-
-
