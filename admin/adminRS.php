@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 <link rel="stylesheet" href="../styles.css">
+<script src="../js/script.js"></script>
 <html lang="en">
 
 <header>
@@ -118,14 +119,3 @@
 </body>
 
 </html>
-<script>
-    function remove(table, n) {
-        var id = document.getElementById("id" + n).innerText;
-        var name = document.getElementById("name" + n).innerText;
-        var url = ("../delete.php?table=" + table + "&id=" + id);
-        var msg = "Are you sure want to delete this record?\n\n ID :\n" + id + "\n\n Name :\n" + name;
-        var conf = confirm(msg);
-        if (conf)
-            window.location = "" + url;
-    }
-</script>
