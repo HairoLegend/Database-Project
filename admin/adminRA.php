@@ -67,7 +67,6 @@ session_start();
                         </td>
                     </tr>
 
-
             <?php
                 }
             } else {

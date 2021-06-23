@@ -83,7 +83,6 @@ td input {
 #tablestyle td,
 #tablestyle th {
     border: 1px solid #ddd;
-    padding: 8px;
 }
 
 #tablestyle tr:nth-child(even) {
@@ -95,8 +94,8 @@ td input {
 }
 
 #tablestyle th {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
     text-align: center;
     background-color: #04AA6D;
     color: white;
