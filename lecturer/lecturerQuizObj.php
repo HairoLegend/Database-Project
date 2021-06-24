@@ -100,7 +100,7 @@ $user = $_SESSION['userName'];
 
             <tr style="text-align: center;">
                 <form method="POST">
-                    <td style="text-align: left;"></td>
+                    <td></td>
                     <td><input type="text" name="question" placeholder="Enter question"></td>
                     <td><input type="text" name="option_a" placeholder="Enter answer A"></td>
                     <td><input type="text" name="option_b" placeholder="Enter answer B"></td>
