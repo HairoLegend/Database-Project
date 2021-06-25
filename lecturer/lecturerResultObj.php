@@ -1,5 +1,9 @@
 <?php
 session_start();
+$code = $_GET['code'];
+$name = $_GET['name'];
+$userId = $_SESSION['userId'];
+
 ?>
 <!DOCTYPE html>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -32,8 +36,8 @@ session_start();
 <body>
     <div style="margin-left: 120px; margin-top: 20px;">
         <h3>Quiz Objective Result</h3>
-        <h6>Subject Name :</h6>
-        <h6>Subject Code :</h6>
+        <h6>Subject Name : <?= $name ?></h6>
+        <h6>Subject Code : <?= $code ?></h6>
     </div>
     <hr>
 
@@ -46,26 +50,49 @@ session_start();
                 <th>Student Name</th>
                 <th>Result</th>
             </tr>
+            <?php
+            //Displaying data in table
+            include('../database.php');
 
-            <tr style="text-align: center;">
-                <td style="text-align: left;">1</td>
-                <td>AI190065</td>
-                <td>Muhammad Hazim</td>
-                <td>6/20</td>
-            </tr>
+            $sql = "SELECT stud.name AS student_name, stud.id AS student_id, sub.obj_result AS marks
+                            FROM studenttask sub
+                            JOIN student stud ON sub.student_id = stud.id
+                            WHERE sub.subject_id = '$code'";
 
-            <tr style="text-align: center;">
-                <td style="text-align: left;">2</td>
-                <td>AI190095</td>
-                <td>Norman Hakim</td>
-                <td>20/20</td>
-            </tr>
+            $result = $conn->querY($sql);
+            $num = 0;
+            $count_pass = 0; //Count number of pass 
+            $count_fail = 0; //Count number of fails
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    ++$num;
+            ?>
+                    <tr style="text-align: center;">
+                        <td style="text-align: left;"><?php echo $row["row"] ?></td>
+                        <td><?php echo $row["student_name"] ?></td>
+                        <td><?php echo $row["student_id"] ?></td>
+                        <td><?php echo $row["result"] ?></td>
+                    </tr>
+            <?php
+
+                    if ($row['marks'] > 0)
+                        $count_pass++;
+                    else
+                        $count_fail++;
+                }
+            } else {
+                echo "0 results";
+            }
+            $conn->close();
+
+            ?>
 
         </table>
     </div>
     <div style="margin-left: 120px; margin-top: 20px;">
-        <h6>Number of Student Pass : 1</h6>
-        <h6>Number of Student Fail : 1</h6>
+        <h6>Number of Student Pass : <?= $count_pass ?></h6>
+        <h6>Number of Student Fail : <?= $count_fail ?></h6>
     </div>
 </body>
 

@@ -1,3 +1,14 @@
+<?php
+session_start();
+// User type verification
+if ($_SESSION['userTable'] != 'student')
+    header("Location: /index.php");
+
+$userID = $_SESSION['userId'];
+$UserName = $_SESSION['userName'];
+
+?>
+
 <!DOCTYPE html>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 <link rel="stylesheet" href="../styles.css">
@@ -18,7 +29,7 @@
             <ul>
                 <li><a href="studentHome.php">Home</a></li>
                 <li><a href="studentRegSub.php">Register Subject</a></li>
-                <li><a href="../index.php">Log Out</a></li>
+                <li><a href="../logout.php">Log Out</a></li>
             </ul>
         </nav>
 
@@ -29,8 +40,8 @@
 <body>
     <div style="margin-left: 120px; margin-top: 20px;">
         <h3>Main Dashboard</h3>
-        <h6>Student Name : Norman Hensem Sting aku yahu</h6>
-        <h6>Student ID : </h6>
+        <h6>Student Name : <?= $UserName; ?> </h6>
+        <h6>Student ID : <?= $userID; ?></h6>
     </div>
 
     <hr>
@@ -48,43 +59,49 @@
                 <th>Objective Quiz</th>
 
             </tr>
+            <?php
+            include '../database.php';
 
-            <tr style="text-align: center;">
-                <td style="text-align: left;">1</td>
-                <td>Muhammad Hazim</td>
-                <td>Database</td>
-                <td style="text-align: center;">
-                    <input onclick="location.href = 'studentTask.php';" type="submit" value="View">
-                </td>
-                <td></td>
-                <td>
-                    <input onclick="location.href = 'studentTF.php';" type="submit" value="View">
-                </td>
-                <td></td>
-                <td>
-                    <input onclick="location.href = 'studentObj.php';" type="submit" value="View">
-                </td>
+            $sql = "SELECT l.name AS lecturer_name, l.id AS lecturer_id, s.name AS subject_name, 
+                ss.subject_id AS subject_id, ss.tf_result AS tf_mark, ss.obj_result AS obj_mark
+                FROM student_subject ss
+                JOIN lecturer l ON ss.lecturer_id = l.id
+                JOIN subject s ON ss.subject_id = s.id
+                WHERE ss.student_id = '$userID';";
 
-            </tr>
+            $result = $conn->query($sql);
+            $num = 0;
 
-            <tr style="text-align: center;">
-                <td style="text-align: left;">1</td>
-                <td>Danish Hensem</td>
-                <td>Creativity and Innovation</td>
-                <td style="text-align: center;">
-                    <input type="submit" value="View">
-                </td>
-                <td></td>
-                <td>
-                    <input type="submit" value="View">
-                </td>
-                <td></td>
-                <td>
-                    <input type="submit" value="View">
-                </td>
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    ++$num;
 
-            </tr>
+            ?>
+                    <tr style="text-align: center;">
+                        <td style="text-align: left;"><?php echo $row["row"] ?></td>
+                        <td><?= $row['lecturer_name'] ?></td>
+                        <td><?= $row['subject_name'] ?></td>
+                        <td style="text-align: center;">
+                            <button title="View Task" onclick="location.href = 'studentTask.php';">View</button>
+                        </td>
+                        <td><?= $row['tf_mark'] ?></td>
+                        <td>
+                            <button title="View Quiz TF" onclick="location.href = 'studentTF.php';">View</button>
+                        </td>
+                        <td><?= $row['obj_mark'] ?></td>
+                        <td>
+                            <button title="View Quiz Objective" onclick="location.href = 'studentObj.php';">View</button>
+                        </td>
 
+                    </tr>
+            <?php
+                }
+            } else {
+                echo "No results found";
+            }
+
+            $conn->close();
+            ?>
         </table>
     </div>
 
