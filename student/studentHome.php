@@ -49,7 +49,6 @@ $UserName = $_SESSION['userName'];
         <table id="tablestyle">
 
             <tr>
-                <th style="text-align: left;">No</th>
                 <th>Lecturer</th>
                 <th>Subject</th>
                 <th>Task</th>
@@ -64,7 +63,7 @@ $UserName = $_SESSION['userName'];
 
             $sql = "SELECT l.name AS lecturer_name, l.id AS lecturer_id, s.name AS subject_name, 
                 ss.subject_id AS subject_id, ss.tf_result AS tf_mark, ss.obj_result AS obj_mark
-                FROM student_subject ss
+                FROM studentmark ss
                 JOIN lecturer l ON ss.lecturer_id = l.id
                 JOIN subject s ON ss.subject_id = s.id
                 WHERE ss.student_id = '$userID';";
@@ -78,11 +77,10 @@ $UserName = $_SESSION['userName'];
 
             ?>
                     <tr style="text-align: center;">
-                        <td style="text-align: left;"><?php echo $row["row"] ?></td>
                         <td><?= $row['lecturer_name'] ?></td>
                         <td><?= $row['subject_name'] ?></td>
                         <td style="text-align: center;">
-                            <button title="View Task" onclick="location.href = 'studentTask.php';">View</button>
+                            <button title="View Task" onclick="location.href = 'studentTask.php?code=<?= $row['subject_id'] ?>&name=<?= $row['subject_name'] ?>&lid=<?= $row['lecturer_id'] ?>';">View</button>
                         </td>
                         <td><?= $row['tf_mark'] ?></td>
                         <td>

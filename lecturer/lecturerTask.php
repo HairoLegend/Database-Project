@@ -90,7 +90,7 @@ $user = $_SESSION['userName'];
                             $_SESSION['msg'] = "The file " . $fileName . " has been uploaded succesfully.";
                             $_SESSION['status']  = "Success";
                             header("Location:lecturerTask.php?code=" . $code . "&name=" . $name);
-                            die();
+                            die();  
                         } else {
                             $_SESSION['msg'] = "File failed to upload";
                             $_SESSION['status']  = "Fail";
