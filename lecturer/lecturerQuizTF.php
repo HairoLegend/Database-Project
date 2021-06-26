@@ -72,8 +72,8 @@ $user = $_SESSION['userName'];
                                 <option value="True" <?php echo ($row['answer'] == 'True') ? 'selected' :  ''; ?>>True</option>
                                 <option value="False" <?php echo ($row['answer'] == 'False') ? 'selected' :  ''; ?>>False</option>
                         </td>
-                        <td><?= $row['Modified_by'] ?></td>
-                        <td><?= $row['Date_modified'] ?></td>
+                        <td style="text-align: center;"><?= $row['Modified_by'] ?></td>
+                        <td style="text-align: center;"><?= $row['Date_modified'] ?></td>
                         <td style="text-align: center;">
                             <button id="delete<?= $num ?>" onclick="remove_question('quiztf',<?= $num . ',' . $row['id'] ?>)">Delete</button>
                         </td>

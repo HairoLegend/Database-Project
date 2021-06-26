@@ -1,9 +1,5 @@
 <?php
 session_start();
-// User type verification
-if ($_SESSION['userTable'] != 'student')
-    header("Location: /index.php");
-
 $userID = $_SESSION['userId'];
 $UserName = $_SESSION['userName'];
 $lecturerId = $_GET['lid'];
@@ -106,7 +102,7 @@ $code = $_GET['code'];
             //Student upload assignment
             if (isset($_POST['uploadBtn'])) {
                 $taskId = $_POST['task_id'];
-                $targetDir = $_SERVER['DOCUMENT_ROOT'] . '/student/task_file'; //Getting from root direcotry to student assignment folder
+                $targetDir = $_SERVER['DOCUMENT_ROOT'] . '/student/task_file/'; //Getting from root direcotry to student task folder
                 $fileName = basename($_FILES['task']['name']);
                 $targetFilePath = $targetDir . $fileName;
                 $filetmp = $_FILES['task']['tmp_name'];

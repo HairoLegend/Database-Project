@@ -65,4 +65,4 @@ if ($conn->query($sql1) === TRUE) {
 
 $conn->close();
 
-header('Location: dashboard.php');
+header('Location: studentHome.php');

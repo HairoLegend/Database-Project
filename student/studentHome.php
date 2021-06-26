@@ -62,7 +62,7 @@ $UserName = $_SESSION['userName'];
             include '../database.php';
 
             $sql = "SELECT l.name AS lecturer_name, l.id AS lecturer_id, s.name AS subject_name, 
-                ss.subject_id AS subject_id, ss.tf_result AS tf_mark, ss.obj_result AS obj_mark
+                ss.subject_id AS subject_id, ss.tf_result AS tf_result, ss.obj_result AS obj_result
                 FROM studentmark ss
                 JOIN lecturer l ON ss.lecturer_id = l.id
                 JOIN subject s ON ss.subject_id = s.id
@@ -82,13 +82,15 @@ $UserName = $_SESSION['userName'];
                         <td style="text-align: center;">
                             <button title="View Task" onclick="location.href = 'studentTask.php?code=<?= $row['subject_id'] ?>&name=<?= $row['subject_name'] ?>&lid=<?= $row['lecturer_id'] ?>';">View</button>
                         </td>
-                        <td><?= $row['tf_mark'] ?></td>
+                        <td><?= $row['tf_result'] ?></td>
                         <td>
-                            <button title="View Quiz TF" onclick="location.href = 'studentTF.php';">View</button>
+                            <button title="View Quiz TF" onclick="location.href = 'studentTF.php?code=<?= $row['subject_id'] ?>&name=<?= $row['subject_name'] ?>&lid=<?= $row['lecturer_id'] ?>';">View</button>
+
                         </td>
-                        <td><?= $row['obj_mark'] ?></td>
+                        <td><?= $row['obj_result'] ?></td>
                         <td>
-                            <button title="View Quiz Objective" onclick="location.href = 'studentObj.php';">View</button>
+                            <button title="View Quiz Objective" onclick="location.href = 'studentObj.php?code=<?= $row['subject_id'] ?>&name=<?= $row['subject_name'] ?>&lid=<?= $row['lecturer_id'] ?>';">View</button>
+
                         </td>
 
                     </tr>
