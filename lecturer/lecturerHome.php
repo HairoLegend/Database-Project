@@ -76,11 +76,11 @@ $UserName = $_SESSION['userName'];
                             <button title="Add New Assignment & Tutorial" onclick="location.href = 'lecturerTask.php?code=<?= $row['subject_id'] ?>&name=<?= $row['subject_name'] ?>';">Create</button>
                         </td>
                         <td style="text-align: center;">
-                            <button title="View True False Result" onclick="location.href = 'lecturerResultTF.php';">Result</button>
+                            <button title="View True False Result" onclick="location.href = 'lecturerResultTF.php?code=<?= $row['subject_id'] ?>&name=<?= $row['subject_name'] ?>';">Result</button>
                             <button title="Add New True False Quiz" onclick="location.href = 'lecturerQuizTF.php?code=<?= $row['subject_id'] ?>&name=<?= $row['subject_name'] ?>';">Create/View</button>
                         </td>
                         <td style="text-align: center;">
-                            <button title="View Objective Result" onclick="location.href = 'lecturerResultObj.php';">Result</button>
+                            <button title="View Objective Result" onclick="location.href = 'lecturerResultObj.php?code=<?= $row['subject_id'] ?>&name=<?= $row['subject_name'] ?>';">Result</button>
                             <button title="Add New Objective Quiz" onclick="location.href = 'lecturerQuizObj.php?code=<?= $row['subject_id'] ?>&name=<?= $row['subject_name'] ?>';">Create/View</button>
                         </td>
                     </tr>

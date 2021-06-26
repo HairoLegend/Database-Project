@@ -143,7 +143,7 @@ $user = $_SESSION['userName'];
                             <button title="View Content" onclick="window.open('task_files/<?= $row['file_name'] ?>')">Download</button>
                         </td>
                         <td style="text-align: center;" title="View Submission">
-                            <button onclick="location.href = 'lecturerTaskSub.php?code=<?= $code ?>&name=<?= $name ?>&id=<?= $row['id'] ?>';">View</button>
+                            <button onclick="location.href = 'lecturerTaskSub.php?code=<?= $code ?>&name=<?= $name ?>&id=<?= $row['id'] ?>&title=<?= $row['title'] ?>';">View</button>
                         </td>
                         <td style="text-align: center;" title="Delete">
                             <button id="delete" name="delete" del_id="<?= $row['id'] ?>">Delete</button>

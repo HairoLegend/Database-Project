@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 $code = $_GET['code'];
 $name = $_GET['name'];
 $userId = $_SESSION['userId'];
@@ -45,7 +46,6 @@ $userId = $_SESSION['userId'];
         <table id="tablestyle">
 
             <tr>
-                <th style="text-align: left;">No</th>
                 <th>Student ID</th>
                 <th>Student Name</th>
                 <th>Result</th>
@@ -54,8 +54,8 @@ $userId = $_SESSION['userId'];
             //Displaying data in table
             include('../database.php');
 
-            $sql = "SELECT stud.name AS student_name, stud.id AS student_id, sub.obj_result AS marks
-                            FROM studenttask sub
+            $sql = "SELECT stud.name AS student_name, stud.id AS student_id, sub.obj_result AS obj_result
+                            FROM studentmark sub
                             JOIN student stud ON sub.student_id = stud.id
                             WHERE sub.subject_id = '$code'";
 
@@ -69,14 +69,13 @@ $userId = $_SESSION['userId'];
                     ++$num;
             ?>
                     <tr style="text-align: center;">
-                        <td style="text-align: left;"><?php echo $row["row"] ?></td>
-                        <td><?php echo $row["student_name"] ?></td>
                         <td><?php echo $row["student_id"] ?></td>
-                        <td><?php echo $row["result"] ?></td>
+                        <td><?php echo $row["student_name"] ?></td>
+                        <td><?php echo $row["obj_result"] ?></td>
                     </tr>
             <?php
 
-                    if ($row['marks'] > 0)
+                    if ($row['obj_result'] > 0)
                         $count_pass++;
                     else
                         $count_fail++;

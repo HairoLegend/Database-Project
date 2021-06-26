@@ -66,7 +66,7 @@ $UserName = $_SESSION['userName'];
                 FROM studentmark ss
                 JOIN lecturer l ON ss.lecturer_id = l.id
                 JOIN subject s ON ss.subject_id = s.id
-                WHERE ss.student_id = '$userID';";
+                WHERE ss.student_id = '$userID';";      
 
             $result = $conn->query($sql);
             $num = 0;

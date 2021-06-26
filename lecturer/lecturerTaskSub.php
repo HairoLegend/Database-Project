@@ -1,5 +1,10 @@
 <?php
 session_start();
+$code = $_GET['code'];
+$name = $_GET['name'];
+$title = $_GET['title'];
+$id = $_GET['id'];
+$userID = $_SESSION['userId'];
 ?>
 <!DOCTYPE html>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -32,41 +37,56 @@ session_start();
 <body>
     <div style="margin-left: 120px; margin-top: 20px;">
         <h3>Task Submission</h3>
-        <h6>Subject Name :</h6>
-        <h6>Subject Code :</h6>
+        <h6>Subject Name : <?= $name  ?></h6>
+        <h6>Subject Code : <?= $code ?></h6>
     </div>
     <hr>
 
     <div class="container">
-        <label for="id">Task Name : Lab 1</label>
+        <label for="id">Task Name : <?= $title ?></label>
         <table id="tablestyle">
 
             <tr>
-                <th style="text-align: left;">No</th>
                 <th>Student Name</th>
                 <th>Student ID</th>
                 <th>File Name</th>
                 <th>View Content</th>
-
             </tr>
+            <?php
+            include('../database.php');
 
-            <tr style="text-align: center;">
-                <td style="text-align: left;">1</td>
-                <td>Muhammad Hazim</td>
-                <td>AI190065</td>
-                <td>HazimHensem.pdf</td>
-                <td style="text-align: center;">
-                    <input type="submit" value="Download File">
-            </tr>
+            //Displaying data
+            $sql = "SELECT stud.name AS student_name, stud.id AS student_id, assgn.file AS file, assgn.file_name AS file_name, assgn.file AS file, assgn.type AS type
+                            FROM studenttask assgn
+                            JOIN student stud ON assgn.student_id = stud.id
+                            WHERE lecturer_id = '$userID' AND assgn.task_id = '$id'";
+            $result = $conn->query($sql);
+            $num = 0;
 
-            <tr style="text-align: center;">
-                <td style="text-align: left;">2</td>
-                <td>Muhammad Hazim</td>
-                <td>AI190065</td>
-                <td>SongkokNorman.pdf</td>
-                <td style="text-align: center;">
-                    <input type="submit" value="Download File">
-            </tr>
+            // $targetFilePath = $targetDir . $fileName;
+            // $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+
+                    // $targetFilePath = '../../student_assignment/' . $row['file_name'];
+                    // $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+                    //$ext = end(explode('.', $row['file_name']));
+                    $ext = substr(strrchr($row['file_name'], '.'), 1);
+                    ++$num;
+            ?>
+                    <tr style="text-align: center;">
+                    <td><?= $row['student_name'] ?></td>
+                    <td style="text-align: center;"><?= $row['student_id'] ?></td>
+                    <td style="text-align: center;"><?= $row['file_name'] ?></td>
+                        <td style="text-align: center;">
+                        <button id="view" title="View Content" onclick="window.open('../student/task_file/<?= $row['file_name']?>')" >Download</button>
+                    </tr>
+            <?php
+                }
+            } else
+                echo "0 result"
+            ?>
         </table>
     </div>
 
