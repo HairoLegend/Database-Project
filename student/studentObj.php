@@ -78,7 +78,7 @@ $name = $_GET['name'];
                             <td id="answerB<?= $num ?>"><?php echo $row["option_b"] ?></td>
                             <td id="answerC<?= $num ?>"><?php echo $row["option_c"] ?></td>
                             <td id="answerD<?= $num ?>"><?php echo $row["option_d"] ?></td>
-                            <td><select name="answer_q">
+                            <td><select name="answer_q<?= $num ?>">
                                     <option id="option_a<?= $num ?>" value="A" name="answer_q<?= $num ?>">A</option>
                                     <option id="option_b<?= $num ?>" value="B" name="answer_q<?= $num ?>">B</option>
                                     <option id="option_c<?= $num ?>" value="C" name="answer_q<?= $num ?>">C</option>
@@ -98,7 +98,7 @@ $name = $_GET['name'];
                 // To redirect user if he/she already answered
                 $marks = $conn->query("SELECT obj_result FROM studentmark WHERE (subject_id = '$code' && student_id = '$userID')")->fetch_object()->obj_result;
                 if ($marks > 0) {
-                    echo '<script> alert("Oi, you already answer la, go back."); window.location = "/index.php";</script>';
+                    echo '<script> alert("Oi, you already answer la, go back."); window.location = "studentHome.php";</script>';
                 }
 
                 $conn->close();

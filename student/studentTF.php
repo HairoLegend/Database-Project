@@ -68,7 +68,7 @@ $name = $_GET['name'];
                         <tr style="text-align: center;">
                             <td id="id<?= $num ?>"><?php echo $num ?></td>
                             <td id="question<?= $num ?>"><?php echo $row["question"] ?></td>
-                            <td style="text-align: center;"><select name="answer_q">
+                            <td style="text-align: center;"><select name="answer_q<?= $num ?>">
                                     <option value="True" name="answer_q<?= $num ?>">True</option>
                                     <option value="False" name="answer_q<?= $num ?>">False</option>
                             </td>
@@ -85,7 +85,7 @@ $name = $_GET['name'];
                 // To redirect user if he/she already answered
                 $marks = $conn->query("SELECT tf_result FROM studentmark WHERE (subject_id = '$code' && student_id = '$userID')")->fetch_object()->tf_result;
                 if ($marks > 0) {
-                    echo '<script> alert("Oi, you already answer la, go back."); window.location = "/index.php";</script>';
+                    echo '<script> alert("Oi, you already answer la, go back."); window.location = "studentHome.php";</script>';
                 }
 
                 $conn->close();
