@@ -77,8 +77,7 @@ $name = $_GET['name'];
                     }
                 } else {
                     echo "<br>";
-                    $_SESSION['msg'] = "Quiz is not available yet.";
-                    $_SESSION['status'] = "Fail";
+                    echo "Quiz is not available yet.";
                     die();
                 }
 

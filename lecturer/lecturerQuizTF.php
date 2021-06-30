@@ -75,6 +75,7 @@ $user = $_SESSION['userName'];
                         <td style="text-align: center;"><?= $row['Modified_by'] ?></td>
                         <td style="text-align: center;"><?= $row['Date_modified'] ?></td>
                         <td style="text-align: center;">
+                            <button type="submit" name="update">Update</button>
                             <button id="delete<?= $num ?>" onclick="remove_question('quiztf',<?= $num . ',' . $row['id'] ?>)">Delete</button>
                         </td>
                     </tr>

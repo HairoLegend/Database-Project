@@ -85,6 +85,8 @@ $user = $_SESSION['userName'];
                         <td><?= $row['Modified_by'] ?></td>
                         <td><?= $row['Date_modified'] ?></td>
                         <td style="text-align: center;">
+                            <button id="update<?= $num ?>" data-toggle="modal" data-target="#staticBackdrop<?= $num ?>">Edit</button>
+                            <button type="submit" name="update" hidden>Update</button>
                             <button id="delete<?= $num ?>" onclick="remove_question('quizobj',<?= $num . ',' . $row['id'] ?>)">Delete</button>
                         </td>
                     </tr>
@@ -148,13 +150,47 @@ $user = $_SESSION['userName'];
                 echo "<meta http-equiv='refresh' content='0'>";
             }
 
+            if (isset($_POST['update'])) {
+
+                $id = $_POST['id'];
+                $question = $_POST['question'];
+                $option_a =  $_POST['option_a'];
+                $option_b =  $_POST['option_b'];
+                $option_c =  $_POST['option_c'];
+                $option_d =  $_POST['option_d'];
+                $answer = $_POST['answer'];
+                $modiOn = date("Y-m-d h:i:s");
+    
+                $sql = "UPDATE quizobj 
+                        SET question = '$question', 
+                            answer = '$answer', 
+                            option_a = '$option_a', 
+                            option_b = '$option_b', 
+                            option_c = '$option_c', 
+                            option_d = '$option_d', 
+                            Modified_by = '$user', 
+                            Date_modified = '$modiOn' 
+                        WHERE id = '$id'";
+    
+                if ($conn->query($sql) === true) {
+                    // Success
+                    $_SESSION['msg'] = "Question updated successfully!";
+                    $_SESSION['status'] = "Success";
+                } else {
+                    // Failed
+                    $_SESSION['msg'] = "Error: " . $sql . " | " . $conn->error;
+                    $_SESSION['status'] = "Fail";
+                }
+                echo "<meta http-equiv='refresh' content='0'>";
+            }
+    
 
             $conn->close();
             ?>
         </table>
     </div>
-<div style="margin: 100px;">
-</div>
+    <div style="margin: 100px;">
+    </div>
 </body>
 
 </html>

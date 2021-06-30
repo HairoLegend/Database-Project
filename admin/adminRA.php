@@ -97,7 +97,7 @@ session_start();
                     echo "Success";
                 } else {
                     // Failed
-                    echo "Error: ID already exist " . $sql . " | " . $conn->error;
+                    echo "Error: ID already exist "  . $conn->error;
                     die();
                 }
                 echo "<meta http-equiv='refresh' content='0'>";

@@ -84,7 +84,6 @@ $name = $_GET['name'];
                                     <option id="option_c<?= $num ?>" value="C" name="answer_q<?= $num ?>">C</option>
                                     <option id="option_d<?= $num ?>" value="D" name="answer_q<?= $num ?>">D</option>
                             </td>
-
                     <?php
 
                     }

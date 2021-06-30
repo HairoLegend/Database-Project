@@ -76,8 +76,8 @@ session_start();
 
             <tr>
                 <form method="POST">
-                    <td><input type="text" name="id" placeholder="Enter new subject code" style="width: auto;"></td>
-                    <td><input type="text" name="name" placeholder="Enter new subject name" style="width: auto;"></td>
+                    <td><input type="text" name="id" placeholder="Enter new subject code" style="width: auto;" required></td>
+                    <td><input type="text" name="name" placeholder="Enter new subject name" style="width: auto;" required></td>
                     <td></td>
                     <td></td>
                     <td style="text-align: center;">
@@ -102,7 +102,7 @@ session_start();
                     echo "Success";
                 } else {
                     // Failed
-                    echo "Error: " . $sql . " | " . $conn->error;
+                    echo "Error: Subject already exist " . $conn->error;
                     die();
                 }
                 echo "<meta http-equiv='refresh' content='0'>";

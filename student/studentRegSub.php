@@ -83,7 +83,7 @@ $UserName = $_SESSION['userName'];
                             <td style="text-align: center;">
                                 <button name="add" title="Register Subject">Register</button>
                             </td>
-                            </form>
+                        </form>
                     </tr>
 
             <?php
@@ -95,38 +95,39 @@ $UserName = $_SESSION['userName'];
             ?>
 
         </table>
+        <?php
+        //Register Subjects for students
+        include "../database.php";
+        if (isset($_POST['add'])) {
+            $lecturerId = $_POST['lecturer_id'];
+            $subjectId = $_POST['subject_id'];
+            $studentId = $userID;
+
+
+            $sql = "INSERT INTO studentmark (subject_id, student_id, lecturer_id) VALUES ('$subjectId', '$studentId', '$lecturerId')";
+            //
+            if ($conn->query($sql) === true) {
+                // Success
+                $_SESSION['msg'] = "Subject added successfully!";
+                $_SESSION['status'] = "Success";
+            } else {
+                // Failed
+                if ($conn->errno == '1062')
+                    echo "Already register subject";
+                else
+                    $_SESSION['msg'] = $sql . "<br>" . $conn->error . "<br>" . $conn->errno;
+                $_SESSION['status'] = "Fail";
+                die();
+            }
+            echo "<meta http-equiv='refresh' content='0'>";
+        }
+
+        $conn->close();
+
+        ?>
     </div>
 
-    <?php
-    //Register Subjects for students
-    include "../database.php";
-    if (isset($_POST['add'])) {
-        $lecturerId = $_POST['lecturer_id'];
-        $subjectId = $_POST['subject_id'];
-        $studentId = $userID;
 
-
-        $sql = "INSERT INTO studentmark (subject_id, student_id, lecturer_id) VALUES ('$subjectId', '$studentId', '$lecturerId')";
-        //
-        if ($conn->query($sql) === true) {
-            // Success
-            $_SESSION['msg'] = "Subject added successfully!";
-            $_SESSION['status'] = "Success";
-        } else {
-            // Failed
-            if ($conn->errno == '1062')
-                echo "already registered";
-            else
-                $_SESSION['msg'] = $sql . "<br>" . $conn->error . "<br>" . $conn->errno;
-            $_SESSION['status'] = "Fail";
-            die();
-        }
-        echo "<meta http-equiv='refresh' content='0'>";
-    }
-
-    $conn->close();
-
-    ?>
 </body>
 
 </html>

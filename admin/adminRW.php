@@ -37,8 +37,8 @@ session_start();
 
         <table id="tablestyle">
             <tr>
-                <th>Lecturer Name</th>
-                <th>Subject Name</th>
+                <th>Lecturer ID / Name</th>
+                <th>Subject ID / Name</th>
                 <th style="text-align: center;">Delete / Add</th>
             </tr>
             <?php
@@ -61,10 +61,10 @@ session_start();
 
                     <tr>
                         <form method="post">
-                            <td><?= $row['lecturer_name'] ?>
+                            <td><?= $row['lecturer_id'] ?> : <?= $row['lecturer_name'] ?>
                                 <input type="hidden" name="lecturerId" value="<?= $row['lecturer_id'] ?>">
                             </td>
-                            <td><?= $row['subject_name'] ?>
+                            <td><?= $row['subject_id'] ?> : <?= $row['subject_name'] ?>
                                 <input type="hidden" name="subjectId" value="<?= $row['subject_id'] ?>">
                             </td>
                             <td style="text-align: center;">
@@ -99,7 +99,7 @@ session_start();
                                 while ($row = $result->fetch_assoc()) {
                                     ++$num;
                             ?>
-                                    <option style="text-transform: uppercase;" value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
+                                    <option style="text-transform: uppercase;" value="<?= $row['id'] ?>"><?= $row['id'] ?> : <?= $row['name'] ?></option>
                             <?php
                                 }
                             } else {
@@ -125,7 +125,7 @@ session_start();
                                 while ($row = $result->fetch_assoc()) {
                                     ++$num;
                             ?>
-                                    <option style="text-transform: uppercase;" value="<?= $row['id']  ?>"><?= $row['name'] ?></option>
+                                    <option style="text-transform: uppercase;" value="<?= $row['id']  ?>"><?= $row['id']  ?> : <?= $row['name'] ?></option>
                             <?php
                                 }
                             } else {
@@ -156,7 +156,7 @@ session_start();
                     echo "Success";
                 } else {
                     // Failed
-                    echo "Error: " . $sql . " | " . $conn->error;
+                    echo "Error: Already assigned " . $conn->error;
                     die();
                 }
                 echo "<meta http-equiv='refresh' content='0'>";
